@@ -5,6 +5,7 @@ require 'time'
 
 # change the following values
 export_path = "path/to/your/day-one-json-archive"
+json = File.read("#{export_path}/your_journal.json")
 host = "yourblog.com"
 username = "wordpress_username"
 password = "wordpress_password"
@@ -12,7 +13,6 @@ password = "wordpress_password"
 Photo = Struct.new(:img, :identifier)
 wp = Rubypress::Client.new(:host => host, username: username, password: password)
 photos_path = "#{export_path}/photos"
-json = File.read("#{export_path}/Commonplace Book.json")
 journal = JSON.parse(json)
 entries = journal['entries']
 
@@ -112,4 +112,5 @@ entries.each do |entry|
   """
 
 end
+
 
